@@ -1,0 +1,11 @@
+{
+  "name": "lessons",
+  "version": "1.0.0",
+  "description": "website containing university lessons of various branches (CS priority)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yasser",
+  "license": "ISC"
+}

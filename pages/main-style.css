@@ -1,0 +1,61 @@
+body
+{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* TOP MENU */
+.top-menu-bar
+{
+    display: flex;
+    margin: 0;
+    background-color: #6290C8;
+}
+
+.top-menu-bar .links
+{
+    display: flex;
+    margin: 0;
+}
+
+.top-menu-bar .link
+{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.top-menu-bar .logo
+{
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-left: auto;
+}
+
+/* SIDE MENU */
+.content-body .side-menu-bar
+{
+    background-color: #1F487E;
+    width: 20%;
+}
+
+.content-body .side-menu-bar div
+{
+    margin-left: 2em;
+}
+
+.content-body .side-menu-bar h1
+{
+    margin: 0;
+    margin-bottom: 0.25em;
+    padding-top: 0.5em;
+    color: white;
+}
+.content-body .side-menu-bar a
+{
+    margin-left: 2em;
+    margin-top: 1em;
+    line-height: 2;
+    text-decoration: none;
+    color: white;
+    font-size: large;
+}
