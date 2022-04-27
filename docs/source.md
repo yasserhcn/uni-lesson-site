@@ -52,3 +52,31 @@ the array that contains the parts has the following structure
     }
 ]
 ```
+
+# page loading
+landing page is a separate file that will be loaded separately
+
+other pages will be loaded by using a lookups if the page exists in the `db/lookup.json` file
+
+`lookup.json` file has the following structure
+```json
+{
+    "url1" : [
+        {
+            "url2": "location/to/file"
+        },
+        {
+            "url3" : [
+                {
+                    "url4" : "location/to/file"
+                },
+                {
+                    "url5" : "location/to/file"
+                }
+            ]
+        }
+    ],
+    "url6" : "location/to/file"
+}
+```
+the lookup for the file will be done recursively until we either find a string that has the path to the file, or a null value that will return an error (404 not found) 
