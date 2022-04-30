@@ -79,4 +79,6 @@ other pages will be loaded by using a lookups if the page exists in the `db/look
     "url6" : "location/to/file"
 }
 ```
-the lookup for the file will be done recursively until we either find a string that has the path to the file, or a null value that will return an error (404 not found) 
+the lookup for the file will be done until we either find a string that has the path to the file, or a null value that will return an error (404 not found) 
+
+note: the lookup will be automatically done in the db folder, you shouldn't specify it in the path to the file
