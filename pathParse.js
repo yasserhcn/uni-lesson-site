@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // parse the path and get the path to the lesson json file
 function parsePath(path)
 {
@@ -10,15 +12,9 @@ function parsePath(path)
 
     // parse the json file
     let parsedData = JSON.parse(file);
-    console.log(parsedData);
 
     // get the url paths
     let paths = path.split('/');
-    //! remove console logs
-    for(let i = 0; i < paths.length; i++)
-    {
-        console.log(paths[i]);
-    }
 
     //! remove it after done with testing
     let currentPathLoc = 1;
@@ -36,20 +32,28 @@ function parsePath(path)
         // if path doesn't exist immediatly
         if(data[paths[pathLoc]] == undefined)
         {
+            
             // check if it's an array
             if(paths.length > 0)
             {
                 // loop through the array to find the path 
                 for(let i = 0; i < paths.length; i++)
                 {
-                    // check if current index has data
-                    if(data[i][paths[pathLoc]] == undefined)
+                    try
                     {
-                        continue;
-                    }else
+                        // check if current index has data
+                        if(data[i][paths[pathLoc]] == undefined)
+                        {
+                            continue;
+                        }else
+                        {
+                            data = data[i][paths[pathLoc]];
+                            break;
+                        }
+                    }
+                    catch(e)
                     {
-                        data = data[i][paths[pathLoc]];
-                        break;
+                        console.log("error : " + e);
                     }
                 }
             }else
@@ -62,11 +66,10 @@ function parsePath(path)
         {
             // temporary data = path we are currently in
             data = data[paths[pathLoc]]
-            console.log(`path found ${paths[pathLoc]}\n`);
         }
     }
     
-    console.log(`data is : ${data}`)
+    return data;
 }
 
 module.exports = {parsePath}

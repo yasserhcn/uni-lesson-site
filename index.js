@@ -21,7 +21,7 @@ http.createServer((req, res)=>{
         // get path
         let path = req.url;
         // call function
-        let pagePath = parsePath(path);
+        let pagePath = pathParse.parsePath(path);
 
         // change html page to have values of the lesson
 
