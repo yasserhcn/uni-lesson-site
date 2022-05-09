@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const { parse } = require('path');
 const pathParse = require('./serv/pathParse.js');
+const lesson = require('./serv/getLesson.js')
 
 const serverInfo = {hostname: 'localhost', port:80};
 
@@ -22,7 +23,7 @@ http.createServer((req, res)=>{
         let path = req.url;
         // call function
         let pagePath = pathParse.parsePath(path);
-
+        console.log(lesson.getLesson(pagePath));
         // change html page to have values of the lesson
 
         // return the page
