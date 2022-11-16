@@ -9,4 +9,18 @@ function getLesson(pathToLesson)
     return data
 }
 
-module.exports = {getLesson}
+// read the template HTML page
+function readTemplate()
+{
+    let data = fs.readFileSync("./pages/main.html")
+    return data.toString();
+}
+
+// write the html page to serve to the client
+function WritePage(data, htmlPage)
+{
+    console.log(data["title"]);
+    console.log(htmlPage);
+}
+
+module.exports = {getLesson, readTemplate, WritePage}
