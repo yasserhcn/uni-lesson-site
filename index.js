@@ -23,11 +23,26 @@ http.createServer((req, res)=>{
         let path = req.url;
         // call function
         let pagePath = pathParse.parsePath(path);
-        console.log(lesson.getLesson(pagePath));
-        // change html page to have values of the lesson
 
-        // return the page
+        if(typeof(pagePath) != 'string')
+        {
+            console.log("page is not a valid path");
 
+            //TODO: do a 404 page here
+        }else
+        {
+
+            //TODO: ensure that the path is a valid string
+            //TODO: make this work using async
+            let lessonData = lesson.getLesson(pagePath);
+            let templatePage = lesson.readTemplate();
+            // change html page to have values of the lesson
+            lesson.WritePage(lessonData, templatePage);
+            // return the page
+            res.writeHead(200, {'content-type' : 'text/html'});
+            res.write(templatePage);
+            res.end();
+        }
     }
 
     if(req.url == '/main-style.css'){
