@@ -31,12 +31,23 @@ function WritePage(data, htmlPage)
     let dom = new JSDOM(htmlPage);
     let page = dom.window.document
     
-    page.getElementsByClassName("chap1")[0].innerHTML = "";
+    // validate the amount of chapters in the html file
+    if(page.getElementsByClassName("side-menu-bar").length < amountOfChapters)
+    {
+        for(let i = 0; i < amountOfChapters - page.getElementsByClassName("side-menu-bar").length; i++)
+        {
+            page.getElementsByClassName("side-menu-bar")[0].innerHTML += `<div class = "chap${i + page.getElementsByClassName("side-menu-bar").length} > </div>`;
+        }
+    }
+
+    console.log(dom.serialize());
+
     for(let i = 0; i < amountOfChapters; i++)
     {
+        page.getElementsByClassName(`chap${i + 1}`)[0].innerHTML = "";
+
         // set the chapter title
-        let chapterHtml = "<div class = \"chap" + (i+1) + "> ";
-        chapterHtml += "<h1> " + data["chapters"][i]["chapter-title"] + "</h1>\n";
+        page.getElementsByClassName(`chap${i + 1}`)[0].innerHTML += "<h1> " + data["chapters"][i]["chapter-title"] + "</h1>\n";
 
         // set the parts of the chapter
         let amountOfParts = data["chapters"][i]["chapter-parts"].length;
@@ -44,16 +55,10 @@ function WritePage(data, htmlPage)
         {
             console.log("j = " + j);
             console.log(" data : " + data["chapters"][i]["chapter-parts"][j]["part-title"]);
-            chapterHtml += "<a href = \"#\" >" + data["chapters"][i]["chapter-parts"][j]["part-title"] + "</a>\n";
+            console.log("i = " + i);
+            page.getElementsByClassName(`chap${i + 1}`)[0].innerHTML += "<a href = \"#\" >" + data["chapters"][i]["chapter-parts"][j]["part-title"] + "</a> <br>";
         }
-
-        chapterHtml += "</div>"
-        console.log(chapterHtml);
-        page.getElementsByClassName("side-menu-bar")[i].innerHTML += chapterHtml;
-        
     }
-
-    page.getElementsByClassName("chap1")[0].innerHTML += `<h1> ${data["chapters"][0]["chapter-title"]} </h1>`
 
     // TODO: insert the name of each chapter to its own position
     // TODO: insert the name of subchapters and make them links
