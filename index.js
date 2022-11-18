@@ -18,6 +18,12 @@ http.createServer((req, res)=>{
         res.write(page);
         res.end();
     }else
+    if(req.url == '/main-style.css'){
+        res.writeHead(200, {'content-type' : 'text/css'})
+        let style = fs.readFileSync('pages/main-style.css');
+        res.write(style);
+        res.end();
+    }else
     {
         // get path
         let path = req.url;
@@ -37,19 +43,12 @@ http.createServer((req, res)=>{
             let lessonData = lesson.getLesson(pagePath);
             let templatePage = lesson.readTemplate();
             // change html page to have values of the lesson
-            lesson.WritePage(lessonData, templatePage);
+            let page = lesson.WritePage(lessonData, templatePage);
             // return the page
             res.writeHead(200, {'content-type' : 'text/html'});
-            res.write(templatePage);
+            res.write(page);
             res.end();
         }
-    }
-
-    if(req.url == '/main-style.css'){
-        res.writeHead(200, {'content-type' : 'text/css'})
-        let style = fs.readFileSync('pages/main-style.css');
-        res.write(style);
-        res.end();
     }
     
 }).listen(80)
