@@ -36,6 +36,10 @@ body
 {
     background-color: #1F487E;
     width: 20%;
+    scrollbar-width: thin;
+    overflow-y: scroll;
+    position: absolute;
+    height: 100%;
 }
 
 .content-body .side-menu-bar div
