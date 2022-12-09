@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yasser",
-  "license": "ISC"
+  "license": "GPL",
+  "dependencies": {
+    "jsdom": "^20.0.2"
+  }
 }
