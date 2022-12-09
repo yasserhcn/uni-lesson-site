@@ -7,7 +7,8 @@
             "chapter-parts" :
             [
                 {
-                    "part-title" : "title",
+                    "part-title" : "definition",
+                    "link" : "#algorithmique1-definition",
                     "text" : 
                     [
                         {
@@ -18,7 +19,38 @@
                     ]
                 },
                 {
-                    "part-title" : "title",
+                    "part-title" : "programme",
+                    "link" : "#algorithmique1-programme",
+                    "text" :
+                    [
+                        {
+                            "title" : "title",
+                            "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            "footer" : "footer text"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter-title" : "syntax",
+            "chapter-parts" :
+            [
+                {
+                    "part-title" : "variables",
+                    "link" : "#algorithmique1-variables",
+                    "text" : 
+                    [
+                        {
+                            "title" : "title",
+                            "text" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            "footer" : "footer text"
+                        }
+                    ]
+                },
+                {
+                    "part-title" : "conditions",
+                    "link" : "#algorithmique1-conditions",
                     "text" :
                     [
                         {
