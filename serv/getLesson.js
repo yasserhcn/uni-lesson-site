@@ -22,11 +22,8 @@ function readTemplate()
 // write the html page to serve to the client
 function WritePage(data, htmlPage)
 {
-    // console.log(data["title"]);
-    // console.log(htmlPage);
 
     let amountOfChapters = data["chapters"].length;
-    console.log(amountOfChapters);
 
     let dom = new JSDOM(htmlPage);
     let page = dom.window.document
@@ -38,9 +35,13 @@ function WritePage(data, htmlPage)
         {
             page.getElementsByClassName("side-menu-bar")[0].innerHTML += `<div class = "chap${i + page.getElementsByClassName("side-menu-bar").length} > </div>`;
         }
+    }else if(page.getElementsByClassName("side-menu-bar").length > amountOfChapters)
+    {
+        for(let i = amountOfChapters; i < page.getElementsByClassName("side-menu-bar").length; i++)
+        {
+            page.getElementsByClassName(`chap${i+1}`)[0].remove();
+        }
     }
-
-    console.log(dom.serialize());
 
     for(let i = 0; i < amountOfChapters; i++)
     {
@@ -53,10 +54,9 @@ function WritePage(data, htmlPage)
         let amountOfParts = data["chapters"][i]["chapter-parts"].length;
         for(let j = 0; j < amountOfParts; j++)
         {
-            console.log("j = " + j);
-            console.log(" data : " + data["chapters"][i]["chapter-parts"][j]["part-title"]);
-            console.log("i = " + i);
-            page.getElementsByClassName(`chap${i + 1}`)[0].innerHTML += "<a href = \"#\" >" + data["chapters"][i]["chapter-parts"][j]["part-title"] + "</a> <br>";
+            let partTitle = data["chapters"][i]["chapter-parts"][j]["part-title"];
+            let link = data["chapters"][i]["chapter-parts"][j]["link"];
+            page.getElementsByClassName(`chap${i + 1}`)[0].innerHTML += "<a href = \""+ link +"\" >" + partTitle + "</a> <br>";
         }
     }
 
